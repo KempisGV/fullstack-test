@@ -53,6 +53,8 @@ class StoresController < ApplicationController
     respond_to do |format|
       format.html { redirect_to stores_url, notice: "Store was successfully destroyed." }
       format.json { head :no_content }
+      related_products_sql = "DELETE FROM products WHERE store_id = #{@store.id};" 
+      ActiveRecord::Base.connection.exec_query(related_products_sql)
     end
   end
 
