@@ -1,0 +1,41 @@
+<%= form_with(model: store) do |form| %>
+  <% if store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+        <% store.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Stores\'s name'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :street, class: 'form-control', placeholder: 'Street'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :number, class: 'form-control', placeholder: 'Number'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :zip_code, class: 'form-control', placeholder: 'Zip Code'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :city, class: 'form-control', placeholder: 'City'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :country, class: 'form-control', placeholder: 'Country'  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary'%>
+  </div>
+<% end %>

@@ -1,0 +1,53 @@
+<h1>Products</h1>
+<br/>
+
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :name_cont, placeholder: 'Product\'s name' %>
+
+  <%= f.select(:store_id_eq, Store.all.collect {|p| [p.name, p.id]},  {prompt: "Store"}) %>
+  <%= f.select(:category_id_eq, Category.all.collect {|p| [p.name, p.id]},  {prompt: "Category"}) %>
+
+  <%= f.submit %>
+<% end %>
+<br/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Store</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.color %></td>
+        <td><%= product.size %></td>
+        <td><%= product.price %></td>
+        <% category_sql = "SELECT c.name FROM products as p INNER JOIN categories as c ON c.id = p.category_id WHERE c.id = #{product.category_id} limit 1" 
+            categories = ActiveRecord::Base.connection.exec_query(category_sql)
+
+           store_sql = "SELECT s.name FROM products as p INNER JOIN stores as s ON s.id = p.store_id WHERE s.id = #{product.store_id} limit 1" 
+           stores = ActiveRecord::Base.connection.exec_query(store_sql)
+
+        %>
+        <td><%=  categories.rows[0][0]%></td>
+        <td><%=  stores.rows[0][0]%></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path, class:"btn btn-secondary" %>

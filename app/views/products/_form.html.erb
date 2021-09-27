@@ -1,0 +1,41 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Product\'s name'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :color, class: 'form-control', placeholder: 'Color'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :size, class: 'form-control', placeholder: 'Size' %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :price, class: 'form-control', placeholder: 'Price' %>
+  </div>
+  
+  <div class="field form-group mb-3">
+    <%= form.select(:store_id, Store.all.collect {|p| [p.name, p.id]},  {prompt: "Store"}, {class: 'form-control'}) %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.select(:category_id, Category.all.collect {|p| [p.name, p.id]},  {prompt: "Category"}, {class: 'form-control'}) %>
+   </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary'%>
+  </div>
+<% end %>

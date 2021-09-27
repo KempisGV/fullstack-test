@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h5 class="modal-title">New Category</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+      <%= form_with(model: @category) do |form| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% @category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Category\'s name'  %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.text_field :keywords, class: 'form-control', placeholder: 'Keyword'  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary'%>
+  </div>
+<% end %>
+</div>

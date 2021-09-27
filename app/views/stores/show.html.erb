@@ -1,0 +1,13 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @store.name %></h1>
+  <p class="lead">
+    Street: <%= @store.street %><br/>
+    Number: <%= @store.number %><br/>
+    Zip Code: <%= @store.zip_code %><br/>
+    City: <%= @store.city %><br/>
+    Country: <%= @store.country %>
+  </p>
+  <br/>
+  <%= link_to 'Edit', edit_store_path(@store), class:"btn btn-secondary" %> 
+<%= link_to 'Back', stores_path, class:"btn btn-secondary" %>
+</div>

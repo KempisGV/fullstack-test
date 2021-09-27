@@ -1,0 +1,6 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @category.name%> | <%=@category.keywords%></h1>
+  <br/>
+  <%= link_to 'Edit', edit_category_path(@category), class:"btn btn-secondary" %> 
+<%= link_to 'Back', categories_path, class:"btn btn-secondary" %>
+</div>
