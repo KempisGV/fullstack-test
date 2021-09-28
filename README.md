@@ -28,8 +28,7 @@ Create and migrate the database.
 rails db:create && rails db:migrate
 ```
 
-To populate the database with initial data use the [start](start)
-file
+To populate the database with initial data use the back up file: [start](start), you can restore this file in PG Admin, right click on the fullStack_development database and choose restore, there you can choose the start file.
 
 ## Running the app
 
