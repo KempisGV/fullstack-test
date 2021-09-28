@@ -1,24 +1,34 @@
-# README
+# Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 2.7.4p191
 
-Things you may want to cover:
+Rails version 6.1.4.1
 
-* Ruby version
+PostgreSQL version 13.4
 
-* System dependencies
+## Installation
 
-* Configuration
+Use the package manager bundle to install dependencies.
 
-* Database creation
+```bash
+bundle install
+```
 
-* Database initialization
+Create and migrate the database.
 
-* How to run the test suite
+```bash
+rails db:create && rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+To populate the database with initial data use the [start](start)
+file
 
-* Deployment instructions
+## Running the app
 
-* ...
+If the previous steps were carried out correctly, it is time to run the application.
+
+```bash
+rails s
+```
+
+Once the Rails server is running, go to localhost: 3000
