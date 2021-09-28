@@ -16,6 +16,12 @@ Use the package manager bundle to install dependencies.
 bundle install
 ```
 
+Use the package manager yarn to install dependencies.
+
+```bash
+yarn install
+```
+
 Create and migrate the database.
 
 ```bash
