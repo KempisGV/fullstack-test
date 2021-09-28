@@ -8,7 +8,7 @@ PostgreSQL version 13.4
 
 ## Installation
 
-Go to [database.yml](app/config/database.yml) file and set your postgres password to development and test
+Go to [database.yml](config/database.yml) file and set your postgres password to development and test
 
 Use the package manager bundle to install dependencies.
 
